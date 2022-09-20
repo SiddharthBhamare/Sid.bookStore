@@ -1,3 +1,5 @@
+using static System.Net.Mime.MediaTypeNames;
+
 namespace Sid.bookStore
 {
     public class Program
@@ -16,15 +18,18 @@ namespace Sid.bookStore
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+           
             app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.MapDefaultControllerRoute();
+            //(
+            //    name: "default",
+            //    pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }
