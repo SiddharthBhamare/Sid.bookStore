@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace Sid.bookStore
@@ -21,16 +22,15 @@ namespace Sid.bookStore
 
            
             app.UseStaticFiles();
-
+            app.UseStaticFiles(new StaticFileOptions() {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "PrivateImages")),
+                RequestPath = "/PrivateImages"
+            });
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.MapDefaultControllerRoute();
-            //(
-            //    name: "default",
-            //    pattern: "{controller=Home}/{action=Index}/{id?}");
-
             app.Run();
         }
     }
