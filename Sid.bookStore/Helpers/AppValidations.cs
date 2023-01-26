@@ -27,7 +27,7 @@ namespace Sid.bookStore.Helpers
                 case IenmValidatorType.Length:
                    return LengthConstraints(value.ToString());
                 case IenmValidatorType.Required:
-                    if(value == null || !string.IsNullOrWhiteSpace(value.ToString()))
+                    if(value == null || string.IsNullOrWhiteSpace(value.ToString()))
                     {
                         return new ValidationResult("The "+validationContext.DisplayName +" field is required.");
                     }

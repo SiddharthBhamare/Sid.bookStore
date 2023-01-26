@@ -14,7 +14,7 @@ namespace Sid.bookStore
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<BookStoreContext>(options => options.UseSqlServer("Server=SAGITEC-2492\\SQLEXPRESS2017;Database=BookStore;Integrated Security=True;"));
+            builder.Services.AddDbContext<BookStoreContext>(options => options.UseSqlServer("Server=AISHU\\SQLEXPRESS;Database=BookStore;Integrated Security=True; TrustServerCertificate=True;Encrypt=True"));
             builder.Services.AddScoped<BookRepository, BookRepository>();
             var app = builder.Build();
 
