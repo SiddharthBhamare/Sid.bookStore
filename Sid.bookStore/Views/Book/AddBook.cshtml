@@ -1,0 +1,63 @@
+﻿
+@model BookModel
+@{
+    bool isSuccess = false;
+    int BookId = 0;
+    string lstrDefaultLanguage = "English";
+    if (TempData["IsSuccess"] != null)
+    {
+        BookId = Convert.ToInt32(TempData["BookId"]);
+        isSuccess = Convert.ToBoolean(TempData["IsSuccess"]);
+    }
+}
+<div class="container">
+    <h3 class="display-4">Add New Book</h3>   
+    
+    <form method="post" asp-action="AddBook">
+        <div class="form-group bottm bottom-margin-10">
+            <label class="width100"  asp-for="Title"></label>
+            <input asp-for="Title" />    
+            <span asp-validation-for="Title" class="text-danger" ></span>
+       </div>
+        <div class="form-group bottom-margin-10">
+            <label class="width100" asp-for="Author"></label>
+            <input asp-for="Author" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+        <div class="form-group bottom-margin-10">
+            <label class="width100" asp-for="Description"></label>
+            <input asp-for="Description" />
+        </div>
+        <div class="form-group bottom-margin-10">
+            <label class="width100" asp-for="TotalPages"></label>
+            <input asp-for="TotalPages" />
+            <span asp-validation-for="TotalPages" class="text-danger"></span>
+        </div>
+        <div class="form-group bottom-margin-10">
+            <label class="width100" asp-for="Category"></label>
+            <input asp-for="Category" />
+            <span asp-validation-for="Category" class="text-danger" ></span>
+        </div>
+        <div class="form-group bottom-margin-10">
+            <label class="width100" asp-for="Language"></label>
+           @* <input asp-for="Language" />*@
+           <select asp-for="Language" asp-items="ViewBag.Languages">
+               <option>Please Select Languages</option>
+           </select>
+           <span asp-validation-for="Language" class="text-danger"></span>
+        </div>
+        <div class="form-group bottom-margin-10">
+            <input type="submit" value="Add Book" class="btn btn-primary" />
+        </div>
+   </form>   
+</div>
+@section TosterMessage{
+    @if (isSuccess)
+    {
+        <div class="alert alert-success alert-dismissible fade show float-right right-margin-10 bottom-margin-10" role="alert">
+            <strong>Congratulations!</strong> New book added successfully.
+            Click <a asp-action="GetBook" asp-controller="book" asp-route-aIntBookId=@BookId)> here</a> to view new book.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+}
