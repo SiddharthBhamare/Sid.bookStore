@@ -16,3 +16,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+.jumbotron{
+    background:none;
+}
+.bottom-margin-10{
+    margin-bottom:10px !important;
+}
+.right-margin-10 {
+    margin-right: 10px !important;
+}
+.width100{
+    width:100%;
+}
+.float-right{
+    float:right;
+}

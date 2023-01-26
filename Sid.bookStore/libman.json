@@ -10,5 +10,14 @@
       "library": "twitter-bootstrap@5.2.1",
       "destination": "wwwroot/lib/twitter-bootstrap/"
     }
+  ,
+{
+  "provider": "cdnjs",
+  "library": "popper.js@2.11.6",
+  "destination": "wwwroot/js/popper.js/",
+  "files": [
+    "umd/popper.min.js"
   ]
+}
+]
 }
